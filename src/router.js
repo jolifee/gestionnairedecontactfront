@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import ListEntreprises from './views/ListEntreprises.vue';
+import AddEntreprise from './views/AddEntreprise.vue';
+import DetailEntreprise from './views/DetailEntreprise.vue';
+import UpdateEntreprise from './views/UpdateEntreprise.vue';
+import AddContact from './views/AddContact.vue';
+
 
 Vue.use(Router);
 
@@ -8,16 +13,31 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'ListEntreprises',
+      component: ListEntreprises,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/AddEntreprise',
+      name: 'AddEntreprise',
+      component: AddEntreprise,
+    },
+    {
+      path: '/DetailEntreprise/:id_entreprise',
+      name: 'DetailEntreprise',
+      component: DetailEntreprise,
+      props: true,
+    },
+    {
+      path: '/AddContact',
+      name: 'AddContact',
+      component: AddContact,
+      props: true,
+    },
+    {
+      path: '/UpdateEntreprise/:id_entreprise',
+      name: 'UpdateEntreprise',
+      component: UpdateEntreprise,
+      props: true,
     },
   ],
 });
