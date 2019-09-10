@@ -33,7 +33,7 @@
 export default {
   name: 'AddContact',
   props: {
-    entreprise: Object,
+    id_entreprise: String,
   },
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
   methods: {
     // Ajoute une entreprise au tableau entreprises
     async newContact(id_entreprise) {
-      console.log(id_entreprise);
+      console.log(this.id_entreprise);
       const response = await fetch(`${this.apiURL}/contacts`, {
         body: JSON.stringify({
           nom: this.nom,
@@ -67,7 +67,7 @@ export default {
         headers: this.headers,
         method: 'POST',
       });
-      this.$router.push({ name: 'DetailEntreprises', params: { id_entreprise: `${entreprise.id_entreprise}` } });
+      this.$router.push({ name: 'DetailEntreprise', params: { id_entreprise: `${this.id_entreprise}` } });
     },
   },
 };

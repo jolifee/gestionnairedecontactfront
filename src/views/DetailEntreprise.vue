@@ -92,7 +92,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="(contact) of list" :key="contact.id_contact" >
+              <tr v-for="(contact) in filteredlist" :key="contact.id_contact" >
                 <td>{{contact.id_contact}}</td>
                 <td>{{contact.nom}}</td>
                 <td> {{contact.prenom}} </td>
@@ -147,6 +147,17 @@ export default {
     },
 
   },
+  computed: {
+    filteredlist(id_entreprise) {
+      return this.list.filter(contact => {
+          if (contact.id_entreprise === this.id_entreprise) {
+            return contact;
+            console.log(contact)
+          }
+        
+      })
+    },
+  },
   methods: {
     async findOneEntreprise(id_entreprise) {
       try {
@@ -159,14 +170,14 @@ export default {
         console.log(err.message);
       }
     },
-    async listContact(id_entreprise) {
+    async listContact() {
       try {
         const response2 = await fetch(
-          `${this.apiURL}/contacts/entreprises/${this.id_entreprise}`,
+          `${this.apiURL}/contacts/`,
         );
-        console.log(response2);
+        console.log(this.id_entreprise)
         const list = await response2.json();
-        console.log(list);
+        console.log(list)
         this.list = list;
       } catch (err) {
         console.log(err.message);
@@ -180,6 +191,7 @@ export default {
             headers: this.headers,
             method: 'DELETE',
           });
+          console.log(id_contact)
         if (await response) {
           this.listContact();
         } else {
