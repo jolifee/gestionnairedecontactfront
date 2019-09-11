@@ -1,10 +1,10 @@
 <template>
-    <div>
-      <button @click="$router.push({name : 'ListEntreprises'})">retour</button>
-        <h1>Modifier une entreprise</h1>
+  <div>
+    <button @click="$router.push({name : 'ListEntreprises'})">retour à la liste des entreprises</button>
+    <h1>Modifier une entreprise</h1>
     <form @submit.prevent="updateEntreprise()">
       <div class="form-group">
-        <label>Raison Social : </label>
+        <label>Raison Social :</label>
         <input type="text" v-model="raison_social" />
       </div>
       <div>
@@ -12,54 +12,59 @@
         <input type="text" v-model="adresse" />
       </div>
       <div>
-        <label>Code Postal : </label>
-        <input type="text" v-model="code_postal"  />
+        <label>Code Postal :</label>
+        <input type="text" v-model="code_postal" />
       </div>
       <div>
         <label>Ville</label>
-        <input type="text" v-model="ville"  />
+        <input type="text" v-model="ville" />
       </div>
       <div>
-        <label>Type d'entreprise : </label>
+        <label>Type d'entreprise :</label>
         <input type="text" v-model="type" />
       </div>
       <div>
-        <label>Email : </label>
-        <input type="text" v-model="email"  />
+        <label>Email :</label>
+        <input type="text" v-model="email" />
       </div>
       <div>
-        <label>Téléphone : </label>
-        <input type="text" v-model="tel"  />
+        <label>Téléphone :</label>
+        <input type="text" v-model="tel" />
       </div>
       <div>
-        <label>Status : </label>
-          <label for="prospection">prospection</label>
-          <input v-model="statut" type="radio" id="prospection" value="prospection">
-          <br>
-          <label for="Premier_Contact">Premier Contact</label>
-          <input v-model="statut" type="radio" id="Premier_Contact" value="Premier Contact">
-          <br>
-          <label for="Proposition_Commerciale">Proposition Commerciale</label>
-          <input v-model="statut" type="radio" id="Proposition_Commerciale" value="Proposition Commerciale">
-          <br>
-          <label for="Signature">Signature</label>
-          <input v-model="statut" type="radio" id="Signature" value="Signature">
+        <label>Status :</label>
+        <label for="prospection">prospection</label>
+        <input v-model="statut" type="radio" id="prospection" value="prospection" />
+        <br />
+        <label for="Premier_Contact">Premier Contact</label>
+        <input v-model="statut" type="radio" id="Premier_Contact" value="Premier Contact" />
+        <br />
+        <label for="Proposition_Commerciale">Proposition Commerciale</label>
+        <input
+          v-model="statut"
+          type="radio"
+          id="Proposition_Commerciale"
+          value="Proposition Commerciale"
+        />
+        <br />
+        <label for="Signature">Signature</label>
+        <input v-model="statut" type="radio" id="Signature" value="Signature" />
       </div>
       <div>
-        <label>Plus d'info : </label>
+        <label>Plus d'info :</label>
         <input type="text" v-model="description" />
       </div>
       <div></div>
       <input type="submit" />
     </form>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'UpdateEntreprise',
+  name: "UpdateEntreprise",
   props: {
-    id_entreprise: String,
+    id: String
   },
   data() {
     return {
@@ -72,39 +77,39 @@ export default {
       tel: null,
       statut: null,
       description: null,
-      apiURL: 'http://localhost:3000/v1',
+      apiURL: "http://localhost:3000/v1",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
     };
   },
   created() {
-    this.findOneEntreprise(this.id_entreprise);
+    this.findOneEntreprise(this.id);
   },
   watch: {
     $route() {
-      this.findOneEntreprise(this.id_entreprise);
-    },
+      this.findOneEntreprise(this.id);
+    }
   },
   methods: {
-    async findOneEntreprise(id_entreprise) {
-      const response = await fetch(`${this.apiURL}/entreprises/${id_entreprise}`);
+    async findOneEntreprise(id) {
+      const response = await fetch(`${this.apiURL}/entreprises/${id}`);
       const result = await response.json();
-      this.raison_social = result.raison_social,
-      this.adresse = result.adresse,
-      this.code_postal = result.code_postal,
-      this.ville = result.ville,
-      this.type = result.type,
-      this.email = result.email,
-      this.tel = result.tel,
-      this.statut = result.statut,
-      this.description = result.description;
+      (this.raison_social = result.raison_social),
+        (this.adresse = result.adresse),
+        (this.code_postal = result.code_postal),
+        (this.ville = result.ville),
+        (this.type = result.type),
+        (this.email = result.email),
+        (this.tel = result.tel),
+        (this.statut = result.statut),
+        (this.description = result.description);
     },
-    async updateEntreprise(id_entreprise) {
-      const responses = await fetch(`${this.apiURL}/entreprises/${this.id_entreprise}`, {
+    updateEntreprise: async function(id) {
+      let responses = await fetch(`${this.apiURL}/entreprises/${this.id}`, {
         headers: this.headers,
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({
           raison_social: this.raison_social,
           adresse: this.adresse,
@@ -114,12 +119,12 @@ export default {
           email: this.email,
           tel: this.tel,
           statut: this.statut,
-          description: this.description,
-        }),
+          description: this.description
+        })
       });
       console.log(responses);
-      this.$router.push({ name: 'ListEntreprises' });
-    },
-  },
+      this.$router.push({ name: "ListEntreprises" });
+    }
+  }
 };
 </script>

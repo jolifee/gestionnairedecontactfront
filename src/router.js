@@ -22,7 +22,7 @@ export default new Router({
       component: AddEntreprise,
     },
     {
-      path: '/DetailEntreprise/:id_entreprise',
+      path: '/DetailEntreprise/:id',
       name: 'DetailEntreprise',
       component: DetailEntreprise,
       props: true,
@@ -34,7 +34,7 @@ export default new Router({
       props: true,
     },
     {
-      path: '/UpdateEntreprise/:id_entreprise',
+      path: '/UpdateEntreprise/:id',
       name: 'UpdateEntreprise',
       component: UpdateEntreprise,
       props: true,
