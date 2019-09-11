@@ -78,7 +78,7 @@
       </div>
     </div>
     <div>
-      <button @click="$router.push({ name: 'AddContact' })">Ajouter un contact</button>
+      <button @click="$router.push({ name: 'AddContact',params: {id:`${id}`} })">Ajouter un contact</button>
       <table>
         <thead>
           <tr>
@@ -94,8 +94,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(contact) in filteredlist" :key="contact.id_contact">
-            <td>{{contact.id_contact}}</td>
+          <tr v-for="(contact) in list" :key="contact.id_contact">
             <td>{{contact.nom}}</td>
             <td>{{contact.prenom}}</td>
             <td>{{contact.fonction}}</td>
@@ -161,7 +160,7 @@ export default {
   computed: {
     filteredlist(id) {
       return this.list.filter(contact => {
-        if (id_entreprise === this.id) {
+        if (id_entreprise == this.id) {
           return contact;
           console.log(contact);
         }
@@ -180,8 +179,9 @@ export default {
     },
     async listContact() {
       try {
-        const response2 = await fetch(`${this.apiURL}/contacts/`);
-        console.log(this.id);
+        const response2 = await fetch(
+          `${this.apiURL}/contacts/entreprises/:id`
+        );
         const list = await response2.json();
         console.log(list);
         this.list = list;

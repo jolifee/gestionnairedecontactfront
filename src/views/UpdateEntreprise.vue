@@ -107,6 +107,7 @@ export default {
         (this.description = result.description);
     },
     updateEntreprise: async function(id) {
+      console.log(this.id);
       let responses = await fetch(`${this.apiURL}/entreprises/${this.id}`, {
         headers: this.headers,
         method: "PUT",

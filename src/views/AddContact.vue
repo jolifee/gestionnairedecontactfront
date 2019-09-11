@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="$router.push({name : 'DetailEntreprise', params: {id:`${id}`} })">retour</button>
-    <h2>Ajouter un contact</h2>
+    <h2>Ajouter un contact a l'entreprise id : {{id}}</h2>
     <form @submit.prevent="newContact(id)">
       <div class="form-group">
         <label>Nom du contact :</label>
@@ -42,6 +42,7 @@ export default {
       email: null,
       tel: null,
       fonction: null,
+      id_entreprise: null,
       apiURL: "http://localhost:3000/v1",
       headers: {
         Accept: "application/json",
