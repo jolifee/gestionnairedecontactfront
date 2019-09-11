@@ -100,7 +100,7 @@
             <td>{{contact.tel}}</td>
             <td>{{contact.email}}</td>
             <td>
-              <button @click.stop="deletecontact(contact.id_contact)">supprimer</button>
+              <button @click.stop="deleteContact(contact.id_contact)">supprimer</button>
             </td>
             <td>
               <button
@@ -193,7 +193,6 @@ export default {
           headers: this.headers,
           method: "DELETE"
         });
-        console.log(id_contact);
         if (await response) {
           this.listContact();
         } else {
