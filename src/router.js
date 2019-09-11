@@ -5,7 +5,7 @@ import AddEntreprise from './views/AddEntreprise.vue';
 import DetailEntreprise from './views/DetailEntreprise.vue';
 import UpdateEntreprise from './views/UpdateEntreprise.vue';
 import AddContact from './views/AddContact.vue';
-
+import UpdateContact from './views/UpdateContact.vue';
 
 Vue.use(Router);
 
@@ -37,6 +37,12 @@ export default new Router({
       path: '/UpdateEntreprise/:id',
       name: 'UpdateEntreprise',
       component: UpdateEntreprise,
+      props: true,
+    },
+    {
+      path: '/UpdateContact/:id',
+      name: 'UpdateContact',
+      component: UpdateContact,
       props: true,
     },
   ],
