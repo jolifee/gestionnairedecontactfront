@@ -1,30 +1,66 @@
 <template>
-  <div>
-    <button @click="$router.push({name : 'DetailEntreprise', params: {id:`${id}`} })">retour</button>
-    <h2>Ajouter un contact a l'entreprise id : {{id}}</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button
+          class="btn btn-outline-success btn-sm"
+          @click="$router.push({name : 'DetailEntreprise', params: {id:`${id}`} })"
+        >retour</button>
+      </div>
+      <div class="col">
+        <h2>Ajouter un contact</h2>
+      </div>
+      <div class="col"></div>
+    </div>
     <form @submit.prevent="newContact(id)">
-      <div class="form-group">
-        <label>Nom du contact :</label>
-        <input type="text" v-model="nom" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Nom du contact :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="nom" />
+        </div>
       </div>
-      <div>
-        <label>Prénom du contact</label>
-        <input type="text" v-model="prenom" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Prénom du contact :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="prenom" />
+        </div>
       </div>
-      <div>
-        <label>Email :</label>
-        <input type="text" v-model="email" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Email :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="email" />
+        </div>
       </div>
-      <div>
-        <label>Téléphone :</label>
-        <input type="text" v-model="tel" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Téléphone :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="tel" />
+        </div>
       </div>
-      <div>
-        <label>Fonction :</label>
-        <input type="text" v-model="fonction" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Fonction :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="fonction" />
+        </div>
       </div>
-      <div></div>
-      <input type="submit" />
+      <div class="row">
+        <div></div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <input type="submit" />
+        </div>
+      </div>
     </form>
   </div>
 </template>

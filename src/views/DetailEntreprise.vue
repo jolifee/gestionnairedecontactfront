@@ -2,19 +2,23 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <button @click="$router.push({name : 'ListEntreprises'})">retour</button>
+        <button
+          @click="$router.push({name : 'ListEntreprises'})"
+          class="btn btn-outline-success btn-sm"
+        >retour</button>
       </div>
-      <div class="col">
+      <div class="col text-center">
         <h2>{{ entreprise.raison_social }}</h2>
       </div>
-      <div class="col">
+      <div class="col text-right">
         <button
+          class="btn btn-outline-success btn-sm"
           @click="$router.push({name : 'UpdateEntreprise', params: {id_entreprise: `${entreprise.id_entreprise}` } })"
         >Modifier</button>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>adresse :</label>
       </div>
       <div class="col">
@@ -22,7 +26,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Code Postal :</label>
       </div>
       <div class="col">
@@ -30,7 +34,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Ville :</label>
       </div>
       <div class="col">
@@ -38,7 +42,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Type d'entreprise :</label>
       </div>
       <div class="col">
@@ -46,7 +50,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>E-mail :</label>
       </div>
       <div class="col">
@@ -54,7 +58,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Telephone :</label>
       </div>
       <div class="col">
@@ -62,7 +66,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Status :</label>
       </div>
       <div class="col">
@@ -70,7 +74,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col text-right">
         <label>Description :</label>
       </div>
       <div class="col">
@@ -78,18 +82,23 @@
       </div>
     </div>
     <div>
-      <button @click="$router.push({ name: 'AddContact',params: {id:`${id}`} })">Ajouter un contact</button>
-      <table>
+      <div class="text-right">
+        <button
+          class="btn btn-outline-success"
+          @click="$router.push({ name: 'AddContact',params: {id:`${id}`} })"
+        >Ajouter un contact</button>
+      </div>
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>fonction</th>
-            <th>telephone</th>
-            <th>E-mail</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
-            <th>Voir plus</th>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Prenom</th>
+            <th class="text-center">fonction</th>
+            <th class="text-center">telephone</th>
+            <th class="text-center">E-mail</th>
+            <th class="text-center">Supprimer</th>
+            <th class="text-center">Modifier</th>
+            <th class="text-center">Voir plus</th>
           </tr>
         </thead>
         <tbody>
@@ -99,18 +108,26 @@
             <td>{{contact.fonction}}</td>
             <td>{{contact.tel}}</td>
             <td>{{contact.email}}</td>
-            <td>
-              <button @click.stop="deleteContact(contact.id_contact)">supprimer</button>
+            <td class="text-center">
+              <button class="btn btn-outline-success" @click="deleteContact(contact.id_contact)">
+                <font-awesome-icon icon="trash" />
+              </button>
             </td>
-            <td>
+            <td class="text-center">
               <button
-                @click.stop="$router.push({ name: 'UpdateContact', params: {id_contact: `${contact.id_contact}` } })"
-              >modifier</button>
+                class="btn btn-outline-success"
+                @click="$router.push({ name: 'UpdateContact', params: {id_contact: `${contact.id_contact}` } })"
+              >
+                <font-awesome-icon icon="edit" />
+              </button>
             </td>
-            <td>
+            <td class="text-center">
               <button
+                class="btn btn-outline-success"
                 @click="$router.push({name : 'Detailcontact', params: {id_contact:`${contact.id_contact}`} })"
-              >voir +</button>
+              >
+                <font-awesome-icon icon="plus" />
+              </button>
             </td>
           </tr>
         </tbody>

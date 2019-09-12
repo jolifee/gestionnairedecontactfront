@@ -1,61 +1,112 @@
 <template>
-  <div>
-    <button @click="$router.push({name : 'ListEntreprises'})">retour à la liste des entreprises</button>
-    <h1>Modifier une entreprise</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button
+          class="btn btn-outline-success btn-sm"
+          @click="$router.push({name : 'ListEntreprises'})"
+        >retour à la liste des entreprises</button>
+      </div>
+      <div class="col text-center">
+        <h1>Modifier une entreprise</h1>
+      </div>
+    </div>
     <form @submit.prevent="updateEntreprise()">
-      <div class="form-group">
-        <label>Raison Social :</label>
-        <input type="text" v-model="raison_social" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Raison Social :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="raison_social" />
+        </div>
       </div>
-      <div>
-        <label>Adresse</label>
-        <input type="text" v-model="adresse" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Adresse</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="adresse" />
+        </div>
       </div>
-      <div>
-        <label>Code Postal :</label>
-        <input type="text" v-model="code_postal" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Code Postal :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="code_postal" />
+        </div>
       </div>
-      <div>
-        <label>Ville</label>
-        <input type="text" v-model="ville" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Ville</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="ville" />
+        </div>
       </div>
-      <div>
-        <label>Type d'entreprise :</label>
-        <input type="text" v-model="type" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Type d'entreprise :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="type" />
+        </div>
       </div>
-      <div>
-        <label>Email :</label>
-        <input type="text" v-model="email" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Email :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="email" />
+        </div>
       </div>
-      <div>
-        <label>Téléphone :</label>
-        <input type="text" v-model="tel" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Téléphone :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="tel" />
+        </div>
       </div>
-      <div>
-        <label>Status :</label>
-        <label for="prospection">prospection</label>
-        <input v-model="statut" type="radio" id="prospection" value="prospection" />
-        <br />
-        <label for="Premier_Contact">Premier Contact</label>
-        <input v-model="statut" type="radio" id="Premier_Contact" value="Premier Contact" />
-        <br />
-        <label for="Proposition_Commerciale">Proposition Commerciale</label>
-        <input
-          v-model="statut"
-          type="radio"
-          id="Proposition_Commerciale"
-          value="Proposition Commerciale"
-        />
-        <br />
-        <label for="Signature">Signature</label>
-        <input v-model="statut" type="radio" id="Signature" value="Signature" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Status :</label>
+        </div>
+        <div class="col">
+          <input v-model="statut" type="radio" id="prospection" value="prospection" />
+          <label for="prospection">prospection</label>
+          <br />
+          <input v-model="statut" type="radio" id="Premier_Contact" value="Premier Contact" />
+          <label for="Premier_Contact">Premier Contact</label>
+          <br />
+          <input
+            v-model="statut"
+            type="radio"
+            id="Proposition_Commerciale"
+            value="Proposition Commerciale"
+          />
+          <label for="Proposition_Commerciale">Proposition Commerciale</label>
+          <br />
+          <input v-model="statut" type="radio" id="Signature" value="Signature" />
+          <label for="Signature">Signature</label>
+        </div>
       </div>
-      <div>
-        <label>Plus d'info :</label>
-        <input type="text" v-model="description" />
+      <div class="row">
+        <div class="col text-right">
+          <label>Plus d'info :</label>
+        </div>
+        <div class="col">
+          <input type="text" v-model="description" />
+        </div>
       </div>
-      <div></div>
-      <input type="submit" />
+      <div class="row">
+        <div></div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <input type="submit" />
+        </div>
+      </div>
     </form>
   </div>
 </template>
