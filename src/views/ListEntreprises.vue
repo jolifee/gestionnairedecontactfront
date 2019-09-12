@@ -29,8 +29,8 @@
           <th class="text-center">Raison Sociale</th>
           <th class="text-center">Ville</th>
           <th class="text-center">Status</th>
-          <th class="text-center">Modifier</th>
           <th class="text-center">Supprimer</th>
+          <th class="text-center">Modifier</th>
           <th class="text-center">Voir plus</th>
         </tr>
       </thead>
